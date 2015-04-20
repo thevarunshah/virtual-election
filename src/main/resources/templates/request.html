@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Request a Validation Number</title>
+</head>
+<body>
+	<form id="request" action="#" th:action="@{/validation}">
+		<fieldset>		
+		    <label>Name:</label> <br/>
+	    	<input id="name" name="nametxt" type="text"/>
+	    	<br/><br/>
+	    	<label>Nonce:</label> <br/>
+	    	<input id="nonce" name="noncetxt" type="text"/>
+	    	<br/><br/>
+	    	<input id="submit" type="submit" class="button" value="Request"/>
+		</fieldset>
+	</form>
+</body>
+</html>

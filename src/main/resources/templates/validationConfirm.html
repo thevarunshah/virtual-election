@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Request a Validation Number</title>
+</head>
+<body>
+	<form id="confirm" action="#" th:action="@{/validationConfirmed}">
+		<fieldset>		
+		    <label>Validation Number:</label> <br/>
+	    	<label th:text="${validationNum}"></label>
+	    	<br/><br/>
+	    	<label>Nonce:</label> <br/>
+	    	<label th:text="${nonce}"></label>
+	    	<br/><br/>
+	    	<input id="submit" type="submit" class="button" value="Confirm"/>
+		</fieldset>
+	</form>
+</body>
+</html>

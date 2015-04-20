@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Register Voter</title>
+</head>
+<body>
+	<form id="register" action="#" th:action="@{/approve}">
+		<fieldset>		
+		    <label>Name:</label> <br/>
+	    	<input id="name" name="nametxt" type="text"/>
+	    	<br/><br/>
+	    	<label>SSN: (xxxxxxxxx - no dashes)</label> <br/>
+	    	<input id="ssn" name="ssntxt" type="text"/>
+	    	<br/><br/>
+	    	<input id="submit" type="submit" class="button" value="Submit"/>
+		</fieldset>
+	</form>
+</body>
+</html>
