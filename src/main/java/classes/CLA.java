@@ -6,12 +6,12 @@ import java.util.Map;
 
 public class CLA {
 
-	final private static Map<String, Integer> nameKeyMap = new HashMap<String, Integer>();
+	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>();
 	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>();
 		
 	static void buildBase(List<Voter> voters){
 		
-		if(nameKeyMap.size() >= 1){
+		if(nameSSNMap.size() >= 1){
 			return;
 		}
 		
@@ -19,15 +19,15 @@ public class CLA {
 			Voter v = new Voter("voter"+i);
 			int ssn = 100000000;
 			ssn += i;
-			nameKeyMap.put(v.getName(), ssn);
+			nameSSNMap.put(v.getName(), ssn);
 			voters.add(v);
 		}
 	}
 	
-	static boolean isVoterOnList(String name, String ssn){
+	static boolean isVoterOnList(String name, int ssn){
 		
-		if(nameKeyMap.containsKey(name)){
-			if(nameKeyMap.get(name) == Integer.parseInt(ssn)){
+		if(nameSSNMap.containsKey(name)){
+			if(nameSSNMap.get(name) == ssn){
 				return true;
 			}
 		}
@@ -38,6 +38,10 @@ public class CLA {
 	static void validate(String name, Integer validationNum){
 		
 		nameValidationMap.put(name, validationNum);
+	}
+	
+	static void sendToCTF(Voter v){
 		
+		CTF.updateValidationMap(v.getValidationNum(), nameSSNMap.get(v.getName()));
 	}
 }

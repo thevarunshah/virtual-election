@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Vote</title>
+</head>
+<body>
+	<form id="voteForm" action="#" th:action="@{/acceptVote}">
+		<fieldset>		
+		    <label>Validation Number:</label> <br/>
+	    	<input id="validationNum" name="validationNumtxt" type="text"/>
+	    	<br/><br/>
+	    	<label>SSN: (xxxxxxxxx - no dashes)</label> <br/>
+	    	<input id="ssn" name="ssntxt" type="text"/>
+	    	<br/><br/>
+	    	<label>Nonce:</label> <br/>
+	    	<input id="nonce" name="noncetxt" type="text"/>
+	    	<br/><br/>
+	    	<label>Vote:</label> <br/>
+	    	<input id="vote1" name="votetxt" type="radio" value="person1">Person 1</input><br/>
+	    	<input id="vote2" name="votetxt" type="radio" value="person2">Person 2</input><br/>
+	    	<input id="vote3" name="votetxt" type="radio" value="person3">Person 3</input><br/>
+	    	<input id="vote4" name="votetxt" type="radio" value="person4">Person 4</input><br/>
+	    	<br/><br/>
+	    	<input id="submit" type="submit" class="button" value="Submit"/>
+		</fieldset>
+	</form>
+</body>
+</html>

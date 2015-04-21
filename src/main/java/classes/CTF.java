@@ -1,16 +1,29 @@
 package classes;
 
-import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CTF {
 	
-	final private Map<Integer, BigInteger> validationKeyMap;
-	final private Map<Integer, Integer> idVoteMap;
+	private static Integer idGen = 100;
+	final private static Map<Integer, Integer> validationSSNMap = new HashMap<Integer, Integer>();
+	final private static Map<Integer, String> idVoteMap = new HashMap<Integer, String>();
+
+	static void updateValidationMap(int validationNum, int ssn){
+		
+		validationSSNMap.put(validationNum, ssn);
+	}
 	
-	public CTF(){
-		this.validationKeyMap = new HashMap<Integer, BigInteger>();
-		this.idVoteMap = new HashMap<Integer, Integer>();
+	static int addVote(int validationNum, int ssn, String vote){
+		
+		if(validationSSNMap.containsKey(validationNum)){
+			if(validationSSNMap.get(validationNum) == ssn){
+				idGen++;
+				idVoteMap.put(idGen, vote);
+				return idGen;
+			}
+		}
+		
+		return -1;
 	}
 }

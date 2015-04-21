@@ -5,10 +5,10 @@ import java.util.List;
 
 public class VotingBackend {
 	
-	static Integer validationNumGen = 1000;
-	static List<Voter> voters = new ArrayList<Voter>();
+	private static Integer validationNumGen = 1000;
+	private static List<Voter> voters = new ArrayList<Voter>();
 	
-	public static void approveVoter(String name, String ssn){
+	public static void approveVoter(String name, int ssn){
 		
 		CLA.buildBase(voters);
 		
@@ -37,6 +37,20 @@ public class VotingBackend {
 		}
 		
 		return -1;
+	}
+	
+	public static void sendVNumToCTF(String name){
+		
+		for(Voter v : voters){
+			if(v.getName().equals(name)){
+				CLA.sendToCTF(v);
+			}
+		}
+	}
+	
+	public static int getID(int validationNum, int ssn, String vote){
+		
+		return CTF.addVote(validationNum, ssn, vote);
 	}
 
 }

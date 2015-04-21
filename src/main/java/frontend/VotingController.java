@@ -26,7 +26,7 @@ public class VotingController {
 	@RequestMapping("/approve")
 	public String approve(HttpServletRequest req){
 		
-		VotingBackend.approveVoter(req.getParameter("nametxt"), req.getParameter("ssntxt"));
+		VotingBackend.approveVoter(req.getParameter("nametxt"), Integer.parseInt(req.getParameter("ssntxt")));
 		//make above return boolean
 		//go to error page
 		
@@ -46,11 +46,13 @@ public class VotingController {
 		if(validationNum == -1){
 			model.addAttribute("validationNum", validationNum);
 			model.addAttribute("nonce", req.getParameter("noncetxt"));
+			model.addAttribute("name", req.getParameter("nametxt"));
 			//redirect to error page
 		}
 		else{
 			model.addAttribute("validationNum", validationNum);
 			model.addAttribute("nonce", req.getParameter("noncetxt"));
+			model.addAttribute("name", req.getParameter("nametxt"));
 		}
 		
 		return "validationConfirm";
@@ -60,6 +62,43 @@ public class VotingController {
 	public String validationConfirm(HttpServletRequest req){
 		
 		//don't let them request another number
+		//send valnum to ctf
+		VotingBackend.sendVNumToCTF(req.getParameter("nametxt"));
+		
+		return "redirect:/";
+	}
+	
+	@RequestMapping("/vote")
+	public String vote(){
+		
+		return "vote";
+	}
+	
+	@RequestMapping("/acceptVote")
+	public String acceptVote(HttpServletRequest req, Model model){
+		
+		int id = VotingBackend.getID(Integer.parseInt(req.getParameter("validationNumtxt")), Integer.parseInt(req.getParameter("ssntxt")), 
+				req.getParameter("votetxt"));
+		
+		if(id == -1){
+			model.addAttribute("vote", req.getParameter("votetxt"));
+			model.addAttribute("nonce", req.getParameter("noncetxt"));
+			model.addAttribute("id", id);
+			//redirect to error page
+		}
+		else{
+			model.addAttribute("vote", req.getParameter("votetxt"));
+			model.addAttribute("nonce", req.getParameter("noncetxt"));
+			model.addAttribute("id", id);
+		}
+		
+		return "voteConfirm";
+	}
+	
+	@RequestMapping("voteConfirmed")
+	public String voteConfirmed(){
+		
+		//lock the vote
 		
 		return "redirect:/";
 	}

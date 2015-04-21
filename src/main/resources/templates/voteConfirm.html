@@ -2,17 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org"> 
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	<title>Request a Validation Number - Confirm</title>
+	<title>Vote - Confirm</title>
 </head>
 <body>
-	<form id="confirm" action="#" th:action="@{/validationConfirmed}">
+	<form id="confirm" action="#" th:action="@{/voteConfirmed}">
 		<fieldset>		
-		    <label>Validation Number:</label> <br/>
-	    	<label th:text="${validationNum}"></label>
-	    	<input style="visibility: hidden; display:none" name="nametxt" type="text" th:value="${name}"/>
+		    <label>Vote:</label> <br/>
+	    	<label th:text="${vote}"></label>
 	    	<br/><br/>
 	    	<label>Nonce:</label> <br/>
 	    	<label th:text="${nonce}"></label>
+	    	<br/><br/>
+	    	<label>ID:</label> <br/>
+	    	<label th:text="${id}"></label>
+	    	<input style="visibility: hidden; display:none" name="idtxt" type="text" th:value="${id}"/>
 	    	<br/><br/>
 	    	<input id="submit" type="submit" class="button" value="Confirm"/>
 		</fieldset>
