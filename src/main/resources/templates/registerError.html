@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Registration Error</title>
+</head>
+<body>
+	<form id="register" action="#" th:action="@{/register}">
+		<fieldset>
+			<p th:text="'Something went wrong with your registration - please try again.'" />
+			<input id="goRegister" type="submit" class="button" value="Register"/>
+		</fieldset>
+	</form>
+	<br/>
+</body>
+</html>

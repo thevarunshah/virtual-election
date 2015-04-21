@@ -26,11 +26,26 @@ public class VotingController {
 	@RequestMapping("/approve")
 	public String approve(HttpServletRequest req){
 		
-		VotingBackend.approveVoter(req.getParameter("nametxt"), Integer.parseInt(req.getParameter("ssntxt")));
-		//make above return boolean
-		//go to error page
+		boolean approved = VotingBackend.approveVoter(req.getParameter("nametxt"), Integer.parseInt(req.getParameter("ssntxt")));
 		
-		return "redirect:/";
+		if(approved){
+			return "redirect:/registerSuccess";
+		}
+		else{
+			return "redirect:/registerError";
+		}
+	}
+	
+	@RequestMapping("/registerSuccess")
+	public String registerSuccess(){
+		
+		return "registerSuccess";
+	}
+	
+	@RequestMapping("/registerError")
+	public String registerError(){
+		
+		return "registerError";
 	}
 	
 	@RequestMapping("/request")

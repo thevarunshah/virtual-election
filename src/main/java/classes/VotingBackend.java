@@ -8,7 +8,7 @@ public class VotingBackend {
 	private static Integer validationNumGen = 1000;
 	private static List<Voter> voters = new ArrayList<Voter>();
 	
-	public static void approveVoter(String name, int ssn){
+	public static boolean approveVoter(String name, int ssn){
 		
 		CLA.buildBase(voters);
 		
@@ -18,14 +18,12 @@ public class VotingBackend {
 			for(Voter v : voters){
 				if(v.getName().equals(name)){
 					v.setValidationNum(validationNumGen);
-					return;
+					return true;
 				}
 			}
 		}
-		else{
-			System.out.println("voter is not on the list or ssn doesn't match");
-			return;
-		}
+		
+		return false;
 	}
 	
 	public static int getValidationNum(String name){
