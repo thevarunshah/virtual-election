@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Validation Number Request Error</title>
+</head>
+<body>
+	<form id="validation" action="#" th:action="@{/request}">
+		<fieldset>
+			<p th:text="'You might have entered your name wrong or you have not yet registered - please try again.'" />
+			<input id="goRequest" type="submit" class="button" value="Retry Request"/>
+		</fieldset>
+	</form>
+	<br/>
+</body>
+</html>

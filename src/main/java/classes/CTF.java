@@ -11,6 +11,10 @@ public class CTF {
 
 	static void updateValidationMap(int validationNum, int ssn){
 		
+		if(validationSSNMap.containsKey(validationNum)){
+			return;
+		}
+		
 		validationSSNMap.put(validationNum, ssn);
 	}
 	

@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import classes.VotingBackend;
 
@@ -16,7 +17,8 @@ public class VotingController {
 		
 		return "home";
 	}
-
+	
+	/*registration methods*/
 	@RequestMapping("/register")
 	public String register(){
 		
@@ -47,41 +49,47 @@ public class VotingController {
 		
 		return "registerError";
 	}
+	/*registration methods end*/
 	
+	/*validation number request methods*/
 	@RequestMapping("/request")
 	public String request(){
 		
 		return "request";
 	}
 	
-	@RequestMapping("/validation")
+	@RequestMapping(value = "/validation", method = RequestMethod.POST)
 	public String validation(HttpServletRequest req, Model model){
 		
-		int validationNum = VotingBackend.getValidationNum(req.getParameter("nametxt"));
+		String name = req.getParameter("nametxt");
+		int validationNum = VotingBackend.getValidationNum(name);
+		
+		String nonce = req.getParameter("noncetxt");
 		if(validationNum == -1){
-			model.addAttribute("validationNum", validationNum);
-			model.addAttribute("nonce", req.getParameter("noncetxt"));
-			model.addAttribute("name", req.getParameter("nametxt"));
-			//redirect to error page
+			return "redirect:/validationError";
 		}
 		else{
 			model.addAttribute("validationNum", validationNum);
-			model.addAttribute("nonce", req.getParameter("noncetxt"));
-			model.addAttribute("name", req.getParameter("nametxt"));
+			model.addAttribute("nonce", nonce);
+			model.addAttribute("name", name);
+			return "validationConfirm";
 		}
+	}
+	
+	@RequestMapping("/validationError")
+	public String validationError(){
 		
-		return "validationConfirm";
+		return "validationError";
 	}
 	
 	@RequestMapping("/validationConfirmed")
-	public String validationConfirm(HttpServletRequest req){
+	public String validationConfirmed(HttpServletRequest req){
 		
-		//don't let them request another number
-		//send valnum to ctf
 		VotingBackend.sendVNumToCTF(req.getParameter("nametxt"));
 		
 		return "redirect:/";
 	}
+	/*validation number request methods end*/
 	
 	@RequestMapping("/vote")
 	public String vote(){

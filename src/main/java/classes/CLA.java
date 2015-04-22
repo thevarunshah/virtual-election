@@ -42,6 +42,6 @@ public class CLA {
 	
 	static void sendToCTF(Voter v){
 		
-		CTF.updateValidationMap(v.getValidationNum(), nameSSNMap.get(v.getName()));
+		CTF.updateValidationMap(nameValidationMap.get(v.getName()), nameSSNMap.get(v.getName()));
 	}
 }
