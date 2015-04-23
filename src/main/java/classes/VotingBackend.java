@@ -14,12 +14,14 @@ public class VotingBackend {
 		CLA.buildBase(voters);
 		
 		if(CLA.isVoterOnList(name, ssn)){
-			validationNumGen++;
-			CLA.validate(name, validationNumGen);
 			for(Voter v : voters){
 				if(v.getName().equals(name)){
-					v.setValidationNum(validationNumGen);
-					return true;
+					if(v.getValidationNum() == -1){
+						validationNumGen++;
+						CLA.validate(name, validationNumGen);
+						v.setValidationNum(validationNumGen);
+						return true;
+					}
 				}
 			}
 		}

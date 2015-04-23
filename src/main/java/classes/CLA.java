@@ -20,6 +20,8 @@ public class CLA {
 			int ssn = 100000000;
 			ssn += i;
 			nameSSNMap.put(v.getName(), ssn);
+			v.setValidationNum(-1);
+			v.setIdNum(-1);
 			voters.add(v);
 		}
 	}

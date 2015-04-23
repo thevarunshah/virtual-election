@@ -3,12 +3,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Results</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
-<body>
+<body style="margin:20px">
 	<form id="home" action="#" th:action="@{/}">
 		<fieldset>
 			<p th:text="'Here are the results:'" /><br/><br/>
-			<table style="margin: 0 auto" id="resultsTable" border="1">
+			<table id="resultsTable" border="1">
 				<thead>
 					<tr>
 						<th><b>ID</b></th>
