@@ -2,6 +2,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class VotingBackend {
 	
@@ -54,6 +55,11 @@ public class VotingBackend {
 	public static void lockVote(int id){
 		
 		CTF.lockVote(id);
+	}
+	
+	public static Map<Integer, String> getIDVoteMap(){
+		
+		return CTF.getIDVoteMap();
 	}
 
 }

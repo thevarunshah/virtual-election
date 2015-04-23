@@ -54,4 +54,9 @@ public class CTF {
 		
 		idLockMap.put(id, true);
 	}
+	
+	static Map<Integer, String> getIDVoteMap(){
+		
+		return idVoteMap;
+	}
 }

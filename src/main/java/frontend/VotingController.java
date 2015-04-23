@@ -1,5 +1,7 @@
 package frontend;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,8 @@ import classes.VotingBackend;
 
 @Controller
 public class VotingController {
+	
+	private static boolean releaseResults = false;
 	
 	@RequestMapping("/")
 	public String home(){
@@ -132,9 +136,21 @@ public class VotingController {
 	
 	/*results methods*/
 	@RequestMapping("/results")
-	public String results(){
+	public String results(Model model){
 		
-		return "resultsNotReady";
+		if(!releaseResults){
+			return "resultsNotReady";
+		}
+		else{
+			Map<Integer, String> idVoteMap = VotingBackend.getIDVoteMap();
+			model.addAttribute("results", idVoteMap);
+			return "results";
+		}
+	}
+	
+	static void releaseResults(){
+		
+		releaseResults = true;
 	}
 	/*results methods end*/
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Results</title>
+</head>
+<body>
+	<form id="home" action="#" th:action="@{/}">
+		<fieldset>
+			<p th:text="'Here are the results:'" /><br/><br/>
+			<table style="margin: 0 auto" id="resultsTable" border="1">
+				<thead>
+					<tr>
+						<th><b>ID</b></th>
+						<th><b>Vote</b></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${results.empty}">
+						<td colspan="2">No one voted</td>
+					</tr>
+					<tr th:each="result : ${results.entrySet()}">
+						<td th:text="${result.getKey()}">ID</td>
+						<td th:text="${result.getValue()}">Vote</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/><br/>
+			<input id="goHome" type="submit" class="button" value="Back to Home"/>
+		</fieldset>
+	</form>
+	<br/>
+</body>
+</html>
