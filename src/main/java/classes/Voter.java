@@ -5,7 +5,6 @@ public class Voter {
 	private String name;
 	private int validationNum;
 	private int idNum;
-	//boolean for if they can vote or not
 	
 	public Voter(String name){
 		this.name = name;

@@ -91,38 +91,50 @@ public class VotingController {
 	}
 	/*validation number request methods end*/
 	
+	/*voting methods*/
 	@RequestMapping("/vote")
 	public String vote(){
 		
 		return "vote";
 	}
 	
-	@RequestMapping("/acceptVote")
+	@RequestMapping(value = "/acceptVote", method = RequestMethod.POST)
 	public String acceptVote(HttpServletRequest req, Model model){
 		
 		int id = VotingBackend.getID(Integer.parseInt(req.getParameter("validationNumtxt")), Integer.parseInt(req.getParameter("ssntxt")), 
 				req.getParameter("votetxt"));
 		
 		if(id == -1){
-			model.addAttribute("vote", req.getParameter("votetxt"));
-			model.addAttribute("nonce", req.getParameter("noncetxt"));
-			model.addAttribute("id", id);
-			//redirect to error page
+			return "redirect:/voteError";
 		}
 		else{
 			model.addAttribute("vote", req.getParameter("votetxt"));
 			model.addAttribute("nonce", req.getParameter("noncetxt"));
 			model.addAttribute("id", id);
+			return "voteConfirm";
 		}
-		
-		return "voteConfirm";
 	}
 	
-	@RequestMapping("voteConfirmed")
-	public String voteConfirmed(){
+	@RequestMapping("/voteError")
+	public String voteError(){
 		
-		//lock the vote
+		return "voteError";
+	}
+	
+	@RequestMapping("/voteConfirmed")
+	public String voteConfirmed(HttpServletRequest req){
+		
+		VotingBackend.lockVote(Integer.parseInt(req.getParameter("idtxt")));
 		
 		return "redirect:/";
 	}
+	/*voting methods end*/
+	
+	/*results methods*/
+	@RequestMapping("/results")
+	public String results(){
+		
+		return "resultsNotReady";
+	}
+	/*results methods end*/
 }

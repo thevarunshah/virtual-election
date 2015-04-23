@@ -50,5 +50,10 @@ public class VotingBackend {
 		
 		return CTF.addVote(validationNum, ssn, vote);
 	}
+	
+	public static void lockVote(int id){
+		
+		CTF.lockVote(id);
+	}
 
 }
