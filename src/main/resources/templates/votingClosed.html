@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Voting is now Closed</title>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+</head>
+<body style="margin:20px">
+	<form id="results" action="#" th:action="@{/results}">
+		<fieldset>
+			<p th:text="'Sorry, the voting period has ended - you can view the results below.'" />
+			<input id="viewResults" type="submit" class="button" value="View Results"/>
+		</fieldset>
+	</form>
+	<br/>
+</body>
+</html>

@@ -26,6 +26,10 @@ public class VotingController {
 	@RequestMapping("/register")
 	public String register(){
 		
+		if(releaseResults){
+			return "votingClosed";
+		}
+		
 		return "register";
 	}
 	
@@ -58,6 +62,10 @@ public class VotingController {
 	/*validation number request methods*/
 	@RequestMapping("/request")
 	public String request(){
+		
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "request";
 	}
@@ -98,6 +106,10 @@ public class VotingController {
 	/*voting methods*/
 	@RequestMapping("/vote")
 	public String vote(){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "vote";
 	}
