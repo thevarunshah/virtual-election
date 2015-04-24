@@ -155,7 +155,11 @@ public class VotingController {
 		}
 		else{
 			Map<Integer, String> idVoteMap = VotingBackend.getIDVoteMap();
-			model.addAttribute("results", idVoteMap);
+			model.addAttribute("idvotes", idVoteMap);
+			int[] voteTally = VotingBackend.getVoteTally();
+			model.addAttribute("tally", voteTally);
+			Map<String, String> whoVoted = VotingBackend.getWhoVotedMap();
+			model.addAttribute("votemap", whoVoted);
 			return "results";
 		}
 	}

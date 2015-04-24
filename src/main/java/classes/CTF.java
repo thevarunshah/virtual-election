@@ -10,6 +10,7 @@ public class CTF {
 	final private static Map<Integer, Integer> validationIDMap = new HashMap<Integer, Integer>();
 	final private static Map<Integer, String> idVoteMap = new HashMap<Integer, String>();
 	final private static Map<Integer, Boolean> idLockMap = new HashMap<Integer, Boolean>();
+	final private static int[] voteTally = new int[4];
 
 	static void updateValidationMap(int validationNum, int ssn){
 		
@@ -50,13 +51,35 @@ public class CTF {
 		return -1;
 	}
 	
+	private static void updateTally(String vote){
+		
+		if(vote.contains("1")){
+			voteTally[0] = voteTally[0]+1;
+		}
+		else if(vote.contains("2")){
+			voteTally[1] = voteTally[1]+1;
+		}
+		else if(vote.contains("3")){
+			voteTally[2] = voteTally[2]+1;
+		}
+		else if(vote.contains("4")){
+			voteTally[3] = voteTally[3]+1;
+		}
+	}
+	
 	static void lockVote(int id){
 		
+		updateTally(idVoteMap.get(id));
 		idLockMap.put(id, true);
 	}
 	
 	static Map<Integer, String> getIDVoteMap(){
 		
 		return idVoteMap;
+	}
+	
+	static int[] getVoteTally(){
+		
+		return voteTally;
 	}
 }

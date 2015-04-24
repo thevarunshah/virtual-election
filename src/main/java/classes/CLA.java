@@ -3,6 +3,7 @@ package classes;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class CLA {
 
@@ -45,5 +46,20 @@ public class CLA {
 	static void sendToCTF(Voter v){
 		
 		CTF.updateValidationMap(nameValidationMap.get(v.getName()), nameSSNMap.get(v.getName()));
+	}
+	
+	static Map<String, String> whoVoted(){
+		
+		Map<String, String> whoVoted = new HashMap<String, String>();
+		for(Entry<String, Integer> e : nameSSNMap.entrySet()){
+			if(nameValidationMap.containsKey(e.getKey())){
+				whoVoted.put(e.getKey(), "Yes");
+			}
+			else{
+				whoVoted.put(e.getKey(), "No");
+			}
+		}
+		
+		return whoVoted;
 	}
 }

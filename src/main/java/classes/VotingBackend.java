@@ -63,5 +63,14 @@ public class VotingBackend {
 		
 		return CTF.getIDVoteMap();
 	}
-
+	
+	public static int[] getVoteTally(){
+		
+		return CTF.getVoteTally();
+	}
+	
+	public static Map<String, String> getWhoVotedMap(){
+		
+		return CLA.whoVoted();
+	}
 }

@@ -8,21 +8,65 @@
 <body style="margin:20px">
 	<form id="home" action="#" th:action="@{/}">
 		<fieldset>
-			<p th:text="'Here are the results:'" /><br/><br/>
+			<p th:text="'Here are the results:'" /><br/>
 			<table id="resultsTable" border="1">
 				<thead>
 					<tr>
-						<th><b>ID</b></th>
-						<th><b>Vote</b></th>
+						<th><b>Person </b></th>
+						<th><b>Votes </b></th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:if="${results.empty}">
+					<tr>
+						<th><b>Person 1 </b></th>
+						<th th:text="${tally[0]}"></th>
+					</tr>
+					<tr>
+						<th><b>Person 2 </b></th>
+						<th th:text="${tally[1]}"></th>
+					</tr>
+					<tr>
+						<th><b>Person 3 </b></th>
+						<th th:text="${tally[2]}"></th>
+					</tr>
+					<tr>
+						<th><b>Person 4 </b></th>
+						<th th:text="${tally[3]}"></th>
+					</tr>
+				</tbody>
+			</table>
+			<br/><br/>
+			<p th:text="'Here is a list of who voted for whom:'" /><br/>
+			<table id="idVoteTable" border="1">
+				<thead>
+					<tr>
+						<th><b>ID </b></th>
+						<th><b>Vote </b></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:if="${idvotes.empty}">
 						<td colspan="2">No one voted</td>
 					</tr>
-					<tr th:each="result : ${results.entrySet()}">
+					<tr th:each="result : ${idvotes.entrySet()}">
 						<td th:text="${result.getKey()}">ID</td>
 						<td th:text="${result.getValue()}">Vote</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/><br/>
+			<p th:text="'Here is a list mentioning who voted and who did not:'" /><br/>
+			<table id="whoVotedTable" border="1">
+				<thead>
+					<tr>
+						<th><b>Name </b></th>
+						<th><b>Voted? </b></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="person : ${votemap.entrySet()}">
+						<td th:text="${person.getKey()}">ID</td>
+						<td th:text="${person.getValue()}">Vote</td>
 					</tr>
 				</tbody>
 			</table>
