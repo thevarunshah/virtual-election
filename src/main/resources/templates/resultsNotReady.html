@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="home" action="#" th:action="@{/}">
+	<form id="home" action="#" class="form-group" th:action="@{/}">
 		<fieldset>
 			<p th:text="'Sorry, the results are not yet ready - please try again later.'" />
-			<input id="goHome" type="submit" class="button" value="Back to Home"/>
+			<input id="goHome" type="submit" class="button btn btn-success" value="Back to Home"/>
 		</fieldset>
 	</form>
 	<br/>

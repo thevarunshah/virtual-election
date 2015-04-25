@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="confirm" action="#" th:action="@{/voteConfirmed}">
+	<form id="confirm" action="#" class="form-group" th:action="@{/voteConfirmed}">
 		<fieldset>		
 		    <label>Vote:</label> <br/>
 	    	<label th:text="${vote}"></label>
@@ -18,7 +18,7 @@
 	    	<label th:text="${id}"></label>
 	    	<input style="visibility: hidden; display:none" name="idtxt" type="text" th:value="${id}"/>
 	    	<br/><br/>
-	    	<input id="submit" type="submit" class="button" value="Confirm"/>
+	    	<input id="submit" type="submit" class="button btn btn-success" value="Confirm"/>
 		</fieldset>
 	</form>
 </body>

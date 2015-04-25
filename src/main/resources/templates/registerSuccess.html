@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="home" action="#" th:action="@{/}">
+	<form id="home" action="#" class="form-group" th:action="@{/}">
 		<fieldset>
 			<p th:text="'You have successfully registered - you can now go on request for a validation number.'" />
-			<input id="goHome" type="submit" class="button" value="Back to Home"/>
+			<input id="goHome" type="submit" class="button btn btn-success" value="Back to Home"/>
 		</fieldset>
 	</form>
 	<br/>

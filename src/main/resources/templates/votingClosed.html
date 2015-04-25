@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="results" action="#" th:action="@{/results}">
+	<form id="results" action="#" class="form-group" th:action="@{/results}">
 		<fieldset>
 			<p th:text="'Sorry, the voting period has ended - you can view the results below.'" />
-			<input id="viewResults" type="submit" class="button" value="View Results"/>
+			<input id="viewResults" type="submit" class="button btn btn-success" value="View Results"/>
 		</fieldset>
 	</form>
 	<br/>

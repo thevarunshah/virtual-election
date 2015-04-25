@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="home" action="#" th:action="@{/}">
+	<form id="home" action="#" class="form-group" style="width:500px" th:action="@{/}">
 		<fieldset>
 			<p th:text="'Here are the results:'" /><br/>
-			<table id="resultsTable" border="1">
+			<table class="table table-bordered table-condensed table-hover table-striped" id="resultsTable" border="1">
 				<thead>
 					<tr>
 						<th><b>Person </b></th>
@@ -37,7 +37,7 @@
 			</table>
 			<br/><br/>
 			<p th:text="'Here is a list of who voted for whom:'" /><br/>
-			<table id="idVoteTable" border="1">
+			<table class="table table-bordered table-condensed table-hover table-striped" id="idVoteTable" border="1">
 				<thead>
 					<tr>
 						<th><b>ID </b></th>
@@ -56,7 +56,7 @@
 			</table>
 			<br/><br/>
 			<p th:text="'Here is a list mentioning who voted and who did not:'" /><br/>
-			<table id="whoVotedTable" border="1">
+			<table class="table table-bordered table-condensed table-hover table-striped" id="whoVotedTable" border="1">
 				<thead>
 					<tr>
 						<th><b>Name </b></th>
@@ -71,7 +71,7 @@
 				</tbody>
 			</table>
 			<br/><br/>
-			<input id="goHome" type="submit" class="button" value="Back to Home"/>
+			<input id="goHome" type="submit" class="button btn btn-success" value="Back to Home"/>
 		</fieldset>
 	</form>
 	<br/>

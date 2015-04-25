@@ -6,31 +6,31 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="register" action="#" th:action="@{/register}">
+	<form id="register" action="#" class="form-group" th:action="@{/register}">
 		<fieldset>
 			<p th:text="'Click here to register: '" />
-			<input id="goRegister" type="submit" class="button" value="Register!"/>
+			<input id="goRegister" type="submit" class="button btn btn-primary" value="Register!"/>
 		</fieldset>
 	</form>
 	<br/>
-	<form id="request" action="#" th:action="@{/request}">
+	<form id="request" action="#" class="form-group" th:action="@{/request}">
 		<fieldset>
 			<p th:text="'Click here to request a validation number: '" />
-			<input id="numRequest" type="submit" class="button" value="Request a Validation Number"/>
+			<input id="numRequest" type="submit" class="button btn btn-primary" value="Request a Validation Number"/>
 		</fieldset>
 	</form>
 	<br/>
-	<form id="vote" action="#" th:action="@{/vote}">
+	<form id="vote" action="#" class="form-group" th:action="@{/vote}">
 		<fieldset>
 			<p th:text="'Click here to vote: '" />
-			<input id="goVote" type="submit" class="button" value="Vote!"/>
+			<input id="goVote" type="submit" class="button btn btn-primary" value="Vote!"/>
 		</fieldset>
 	</form>
 	<br/>
-	<form id="results" action="#" th:action="@{/results}">
+	<form id="results" action="#" class="form-group" th:action="@{/results}">
 		<fieldset>
 			<p th:text="'Click here to view the results: '" />
-			<input id="viewResults" type="submit" class="button" value="View Results"/>
+			<input id="viewResults" type="submit" class="button btn btn-success" value="View Results"/>
 		</fieldset>
 	</form>
 	<br/>

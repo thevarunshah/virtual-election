@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="vote" action="#" th:action="@{/vote}">
+	<form id="vote" action="#" class="form-group" th:action="@{/vote}">
 		<fieldset>
 			<p th:text="'You might have entered the wrong validation number or you have not yet registered - please try again.'" />
-			<input id="goVote" type="submit" class="button" value="Retry Voting"/>
+			<input id="goVote" type="submit" class="button btn btn-success" value="Retry Voting"/>
 		</fieldset>
 	</form>
 	<br/>

@@ -6,10 +6,10 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="register" action="#" th:action="@{/register}">
+	<form id="register" action="#" class="form-group" th:action="@{/register}">
 		<fieldset>
 			<p th:text="'Something went wrong with your registration - please try again.'" />
-			<input id="goRegister" type="submit" class="button" value="Register"/>
+			<input id="goRegister" type="submit" class="button btn btn-success" value="Register"/>
 		</fieldset>
 	</form>
 	<br/>

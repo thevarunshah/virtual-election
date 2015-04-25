@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="register" action="#" th:action="@{/approve}">
+	<form id="register" action="#" class="form-group" th:action="@{/approve}">
 		<fieldset>		
 		    <label>Name:</label> <br/>
 	    	<input id="name" name="nametxt" type="text"/>
@@ -14,7 +14,7 @@
 	    	<label>SSN: (xxxxxxxxx - no dashes)</label> <br/>
 	    	<input id="ssn" name="ssntxt" type="text"/>
 	    	<br/><br/>
-	    	<input id="submit" type="submit" class="button" value="Submit"/>
+	    	<input id="submit" type="submit" class="button btn btn-success" value="Submit"/>
 		</fieldset>
 	</form>
 </body>

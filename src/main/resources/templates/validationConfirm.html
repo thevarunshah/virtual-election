@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="confirm" action="#" th:action="@{/validationConfirmed}">
+	<form id="confirm" action="#" class="form-group" th:action="@{/validationConfirmed}">
 		<fieldset>		
 		    <label>Validation Number:</label> <br/>
 	    	<label th:text="${validationNum}"></label>
@@ -15,7 +15,7 @@
 	    	<label>Nonce:</label> <br/>
 	    	<label th:text="${nonce}"></label>
 	    	<br/><br/>
-	    	<input id="submit" type="submit" class="button" value="Confirm"/>
+	    	<input id="submit" type="submit" class="button btn btn-success" value="Confirm"/>
 		</fieldset>
 	</form>
 </body>

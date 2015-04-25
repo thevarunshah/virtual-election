@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="css/bootstrap.css" />
 </head>
 <body style="margin:20px">
-	<form id="voteForm" action="#" th:action="@{/acceptVote}" method="post">
+	<form id="voteForm" action="#" class="form-group" th:action="@{/acceptVote}" method="post">
 		<fieldset>		
 		    <label>Validation Number:</label> <br/>
 	    	<input id="validationNum" name="validationNumtxt" type="text"/>
@@ -23,7 +23,7 @@
 	    	<input id="vote3" name="votetxt" type="radio" value="person3">Person 3</input><br/>
 	    	<input id="vote4" name="votetxt" type="radio" value="person4">Person 4</input><br/>
 	    	<br/><br/>
-	    	<input id="submit" type="submit" class="button" value="Submit"/>
+	    	<input id="submit" type="submit" class="button btn btn-success" value="Submit"/>
 		</fieldset>
 	</form>
 </body>
