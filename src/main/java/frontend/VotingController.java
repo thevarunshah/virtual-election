@@ -215,7 +215,7 @@ public class VotingController {
 			return "redirect:/results";
 		}
 		
-		return "votingClosed";
+		return "resultsNotReady";
 	}
 	/*results methods end*/
 }

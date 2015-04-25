@@ -7,9 +7,9 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:test.Application</config>
 	</configs>
 	<autoconfigs>
+		<config>java:frontend.Application</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>
