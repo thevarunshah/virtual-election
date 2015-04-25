@@ -7,15 +7,17 @@ import java.util.Map.Entry;
 
 class CLA {
 
-	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>();
-	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>();
+	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>(); //name-ssn map
+	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>(); //name-validation number map
 		
 	static void buildBase(List<Voter> voters){
 		
+		//don't initialize twice
 		if(nameSSNMap.size() >= 1){
 			return;
 		}
 		
+		//generate database and add to name-ssn map and the list of voters
 		for(int i = 0; i < 25; i++){
 			Voter v = new Voter("voter"+i);
 			int ssn = 100000000;
@@ -43,14 +45,16 @@ class CLA {
 		nameValidationMap.put(name, validationNum);
 	}
 	
-	static void sendToCTF(Voter v){
+	static void sendToCTF(String name){
 		
-		CTF.updateValidationMap(nameValidationMap.get(v.getName()), nameSSNMap.get(v.getName()));
+		//send over the validation number and ssn to the ctf
+		CTF.updateValidationMap(nameValidationMap.get(name), nameSSNMap.get(name));
 	}
 	
 	static Map<String, String> whoVoted(){
 		
 		Map<String, String> whoVoted = new HashMap<String, String>();
+		//generate a map of who voted and who didn't
 		for(Entry<String, Integer> e : nameSSNMap.entrySet()){
 			if(nameValidationMap.containsKey(e.getKey())){
 				whoVoted.put(e.getKey(), "Yes");

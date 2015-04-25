@@ -27,6 +27,7 @@ public class VotingController {
 	@RequestMapping("/register")
 	public String register(){
 		
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -37,10 +38,12 @@ public class VotingController {
 	@RequestMapping("/approve")
 	public String approve(HttpServletRequest req){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
 		
+		//verify name-ssn pair
 		boolean approved = VotingBackend.approveVoter(req.getParameter("nametxt"), Integer.parseInt(req.getParameter("ssntxt")));
 		
 		if(approved){
@@ -54,6 +57,7 @@ public class VotingController {
 	@RequestMapping("/registerSuccess")
 	public String registerSuccess(){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -64,6 +68,7 @@ public class VotingController {
 	@RequestMapping("/registerError")
 	public String registerError(){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -75,7 +80,8 @@ public class VotingController {
 	/*validation number request methods*/
 	@RequestMapping("/request")
 	public String request(){
-		
+
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -86,12 +92,13 @@ public class VotingController {
 	@RequestMapping(value = "/validation", method = RequestMethod.POST)
 	public String validation(HttpServletRequest req, Model model){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
 		
 		String name = req.getParameter("nametxt");
-		int validationNum = VotingBackend.getValidationNum(name);
+		int validationNum = VotingBackend.getValidationNum(name); //get validation number of the voter
 		
 		String nonce = req.getParameter("noncetxt");
 		if(validationNum == -1){
@@ -108,6 +115,7 @@ public class VotingController {
 	@RequestMapping("/validationError")
 	public String validationError(){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -118,6 +126,7 @@ public class VotingController {
 	@RequestMapping("/validationConfirmed")
 	public String validationConfirmed(HttpServletRequest req){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -132,6 +141,7 @@ public class VotingController {
 	@RequestMapping("/vote")
 	public String vote(){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -142,10 +152,12 @@ public class VotingController {
 	@RequestMapping(value = "/acceptVote", method = RequestMethod.POST)
 	public String acceptVote(HttpServletRequest req, Model model){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
 		
+		//verify name-ssn pair and record their vote and return an id associated for the person
 		int id = VotingBackend.getID(Integer.parseInt(req.getParameter("validationNumtxt")), Integer.parseInt(req.getParameter("ssntxt")), 
 				req.getParameter("votetxt"));
 		
@@ -163,6 +175,7 @@ public class VotingController {
 	@RequestMapping("/voteError")
 	public String voteError(){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
@@ -173,10 +186,12 @@ public class VotingController {
 	@RequestMapping("/voteConfirmed")
 	public String voteConfirmed(HttpServletRequest req){
 
+		//prevent illegal access
 		if(releaseResults){
 			return "votingClosed";
 		}
 		
+		//cannot change vote
 		VotingBackend.lockVote(Integer.parseInt(req.getParameter("idtxt")));
 		
 		return "redirect:/";
@@ -191,6 +206,7 @@ public class VotingController {
 			return "resultsNotReady";
 		}
 		else{
+			//populate the various lists to display on the results map
 			Map<Integer, String> idVoteMap = VotingBackend.getIDVoteMap();
 			TreeMap<Integer, String> idVoteSorted = new TreeMap<Integer, String>(idVoteMap);
 			model.addAttribute("idvotes", idVoteSorted);

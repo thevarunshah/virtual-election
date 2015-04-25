@@ -16,8 +16,9 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Application.class, args); //run server
         
+        //timer which determines how long the voting server will be open for (5 minutes)
         Timer timer = new Timer();
         timer.schedule(new TimerTask(){
         	public void run(){
@@ -26,6 +27,7 @@ public class Application {
         }, 300000);
     }
     
+    //adding SSL certificate to the server
     @Bean
     public EmbeddedServletContainerFactory servletContainer() {
     	

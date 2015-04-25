@@ -6,19 +6,20 @@ import java.util.Map;
 
 public class VotingBackend {
 	
-	private static Integer validationNumGen = 1000;
-	private static List<Voter> voters = new ArrayList<Voter>();
+	private static Integer validationNumGen = 1000; //validation number generator
+	private static List<Voter> voters = new ArrayList<Voter>(); //list of voters
 	
 	public static boolean approveVoter(String name, int ssn){
 		
-		CLA.buildBase(voters);
+		CLA.buildBase(voters); //build the voter database
 		
+		//match name-ssn pair
 		if(CLA.isVoterOnList(name, ssn)){
 			for(Voter v : voters){
 				if(v.getName().equals(name)){
-					if(v.getValidationNum() == -1){
+					if(v.getValidationNum() == -1){ //make sure a validation number was not already assigned
 						validationNumGen++;
-						CLA.validate(name, validationNumGen);
+						CLA.validate(name, validationNumGen); //add name-validation number pair
 						v.setValidationNum(validationNumGen);
 						return true;
 					}
@@ -44,19 +45,20 @@ public class VotingBackend {
 		
 		for(Voter v : voters){
 			if(v.getName().equals(name)){
-				CLA.sendToCTF(v);
+				//tell cla to send validation number of this voter to the ctf
+				CLA.sendToCTF(v.getName()); 
 			}
 		}
 	}
 	
 	public static int getID(int validationNum, int ssn, String vote){
 		
-		return CTF.addVote(validationNum, ssn, vote);
+		return CTF.addVote(validationNum, ssn, vote); //add the vote
 	}
 	
 	public static void lockVote(int id){
 		
-		CTF.lockVote(id);
+		CTF.lockVote(id); //lock the vote
 	}
 	
 	public static Map<Integer, String> getIDVoteMap(){

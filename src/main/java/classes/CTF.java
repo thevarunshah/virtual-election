@@ -14,6 +14,7 @@ class CTF {
 
 	static void updateValidationMap(int validationNum, int ssn){
 		
+		//security check to prevent double checking
 		if(validationSSNMap.containsKey(validationNum)){
 			return;
 		}
@@ -23,9 +24,9 @@ class CTF {
 	
 	static int addVote(int validationNum, int ssn, String vote){
 		
-		if(validationSSNMap.containsKey(validationNum)){
-			if(validationSSNMap.get(validationNum) == ssn){
-				if(!validationIDMap.containsKey(validationNum)){
+		if(validationSSNMap.containsKey(validationNum)){ //validation number is present
+			if(validationSSNMap.get(validationNum) == ssn){ //validation number-ssn pair is correct
+				if(!validationIDMap.containsKey(validationNum)){ //they weren't assigned an id before
 					idGen++;
 					validationIDMap.put(validationNum, idGen);
 					idVoteMap.put(idGen, vote);
@@ -33,7 +34,7 @@ class CTF {
 					return idGen;
 				}
 				else{
-					if(!idLockMap.get(validationIDMap.get(validationNum))){
+					if(!idLockMap.get(validationIDMap.get(validationNum))){ //they didn't confirm their id, regenerate
 						idGen++;
 						int previousID = validationIDMap.get(validationNum);
 						validationIDMap.remove(validationNum);
