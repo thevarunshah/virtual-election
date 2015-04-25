@@ -1,6 +1,7 @@
 package frontend;
 
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -155,11 +156,13 @@ public class VotingController {
 		}
 		else{
 			Map<Integer, String> idVoteMap = VotingBackend.getIDVoteMap();
-			model.addAttribute("idvotes", idVoteMap);
+			TreeMap<Integer, String> idVoteSorted = new TreeMap<Integer, String>(idVoteMap);
+			model.addAttribute("idvotes", idVoteSorted);
 			int[] voteTally = VotingBackend.getVoteTally();
 			model.addAttribute("tally", voteTally);
 			Map<String, String> whoVoted = VotingBackend.getWhoVotedMap();
-			model.addAttribute("votemap", whoVoted);
+			TreeMap<String, String> whoVotedSorted = new TreeMap<String, String>(whoVoted);
+			model.addAttribute("votemap", whoVotedSorted);
 			return "results";
 		}
 	}
