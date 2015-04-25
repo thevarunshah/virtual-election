@@ -36,6 +36,10 @@ public class VotingController {
 	
 	@RequestMapping("/approve")
 	public String approve(HttpServletRequest req){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		boolean approved = VotingBackend.approveVoter(req.getParameter("nametxt"), Integer.parseInt(req.getParameter("ssntxt")));
 		
@@ -49,12 +53,20 @@ public class VotingController {
 	
 	@RequestMapping("/registerSuccess")
 	public String registerSuccess(){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "registerSuccess";
 	}
 	
 	@RequestMapping("/registerError")
 	public String registerError(){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "registerError";
 	}
@@ -73,6 +85,10 @@ public class VotingController {
 	
 	@RequestMapping(value = "/validation", method = RequestMethod.POST)
 	public String validation(HttpServletRequest req, Model model){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		String name = req.getParameter("nametxt");
 		int validationNum = VotingBackend.getValidationNum(name);
@@ -91,12 +107,20 @@ public class VotingController {
 	
 	@RequestMapping("/validationError")
 	public String validationError(){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "validationError";
 	}
 	
 	@RequestMapping("/validationConfirmed")
 	public String validationConfirmed(HttpServletRequest req){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		VotingBackend.sendVNumToCTF(req.getParameter("nametxt"));
 		
@@ -117,6 +141,10 @@ public class VotingController {
 	
 	@RequestMapping(value = "/acceptVote", method = RequestMethod.POST)
 	public String acceptVote(HttpServletRequest req, Model model){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		int id = VotingBackend.getID(Integer.parseInt(req.getParameter("validationNumtxt")), Integer.parseInt(req.getParameter("ssntxt")), 
 				req.getParameter("votetxt"));
@@ -134,12 +162,20 @@ public class VotingController {
 	
 	@RequestMapping("/voteError")
 	public String voteError(){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		return "voteError";
 	}
 	
 	@RequestMapping("/voteConfirmed")
 	public String voteConfirmed(HttpServletRequest req){
+
+		if(releaseResults){
+			return "votingClosed";
+		}
 		
 		VotingBackend.lockVote(Integer.parseInt(req.getParameter("idtxt")));
 		
@@ -170,6 +206,16 @@ public class VotingController {
 	static void releaseResults(){
 		
 		releaseResults = true;
+	}
+	
+	@RequestMapping("/votingClosed")
+	public String votingClosed(){
+		
+		if(releaseResults){
+			return "redirect:/results";
+		}
+		
+		return "votingClosed";
 	}
 	/*results methods end*/
 }

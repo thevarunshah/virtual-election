@@ -3,7 +3,7 @@ package classes;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CTF {
+class CTF {
 	
 	private static Integer idGen = 100;
 	final private static Map<Integer, Integer> validationSSNMap = new HashMap<Integer, Integer>();

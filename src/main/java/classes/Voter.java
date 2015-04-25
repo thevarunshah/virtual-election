@@ -1,16 +1,16 @@
 package classes;
 
-public class Voter {
+class Voter {
 	
 	private String name;
 	private int validationNum;
 	private int idNum;
 	
-	public Voter(String name){
+	Voter(String name){
 		this.name = name;
 	}
 
-	public String getName() {
+	String getName() {
 		return name;
 	}
 

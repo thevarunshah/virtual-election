@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class CLA {
+class CLA {
 
 	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>();
 	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>();
