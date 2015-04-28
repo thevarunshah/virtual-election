@@ -35,7 +35,7 @@ public class VotingController {
 		return "register";
 	}
 	
-	@RequestMapping("/approve")
+	@RequestMapping(value = "/approve", method = RequestMethod.POST)
 	public String approve(HttpServletRequest req){
 
 		//prevent illegal access
@@ -123,7 +123,7 @@ public class VotingController {
 		return "validationError";
 	}
 	
-	@RequestMapping("/validationConfirmed")
+	@RequestMapping(value = "/validationConfirmed", method = RequestMethod.POST)
 	public String validationConfirmed(HttpServletRequest req){
 
 		//prevent illegal access
@@ -183,7 +183,7 @@ public class VotingController {
 		return "voteError";
 	}
 	
-	@RequestMapping("/voteConfirmed")
+	@RequestMapping(value = "/voteConfirmed", method = RequestMethod.POST)
 	public String voteConfirmed(HttpServletRequest req){
 
 		//prevent illegal access
