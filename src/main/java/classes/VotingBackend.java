@@ -9,9 +9,12 @@ public class VotingBackend {
 	private static Integer validationNumGen = 1000; //validation number generator
 	private static List<Voter> voters = new ArrayList<Voter>(); //list of voters
 	
-	public static boolean approveVoter(String name, int ssn){
+	public static void buildDatabase(){
 		
 		CLA.buildBase(voters); //build the voter database
+	}
+	
+	public static boolean approveVoter(String name, int ssn){
 		
 		//match name-ssn pair
 		if(CLA.isVoterOnList(name, ssn)){

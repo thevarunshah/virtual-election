@@ -20,6 +20,8 @@ public class VotingController {
 	@RequestMapping("/")
 	public String home(){
 		
+		VotingBackend.buildDatabase();
+		
 		return "home";
 	}
 	
