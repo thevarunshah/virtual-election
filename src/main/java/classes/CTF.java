@@ -72,6 +72,14 @@ class CTF {
 		
 		updateTally(idVoteMap.get(id));
 		idLockMap.put(id, true);
+		
+		//tell CLA this person voted
+		for(Integer validationNum : validationIDMap.keySet()){
+			if(validationIDMap.get(validationNum) == id){
+				CLA.updateVotedMap(validationNum);
+				break;
+			}
+		}
 	}
 	
 	static Map<Integer, String> getIDVoteMap(){

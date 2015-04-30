@@ -3,12 +3,12 @@ package classes;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 
 class CLA {
 
 	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>(); //name-ssn map
 	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>(); //name-validation number map
+	final private static Map<String, Boolean> nameVotedMap = new HashMap<String, Boolean>(); //name-voted map 
 		
 	static void buildBase(List<Voter> voters){
 		
@@ -23,6 +23,7 @@ class CLA {
 			int ssn = 100000000;
 			ssn += i;
 			nameSSNMap.put(v.getName(), ssn);
+			nameVotedMap.put(v.getName(), false);
 			v.setValidationNum(-1);
 			v.setIdNum(-1);
 			voters.add(v);
@@ -51,16 +52,26 @@ class CLA {
 		CTF.updateValidationMap(nameValidationMap.get(name), nameSSNMap.get(name));
 	}
 	
+	static void updateVotedMap(int validationNum){
+		
+		for(String name : nameValidationMap.keySet()){
+			if(nameValidationMap.get(name) == validationNum){
+				nameVotedMap.put(name, true);
+				break;
+			}
+		}
+	}
+	
 	static Map<String, String> whoVoted(){
 		
 		Map<String, String> whoVoted = new HashMap<String, String>();
 		//generate a map of who voted and who didn't
-		for(Entry<String, Integer> e : nameSSNMap.entrySet()){
-			if(nameValidationMap.containsKey(e.getKey())){
-				whoVoted.put(e.getKey(), "Yes");
+		for(String name : nameVotedMap.keySet()){
+			if(nameVotedMap.get(name)){
+				whoVoted.put(name, "Yes");
 			}
 			else{
-				whoVoted.put(e.getKey(), "No");
+				whoVoted.put(name, "No");
 			}
 		}
 		
