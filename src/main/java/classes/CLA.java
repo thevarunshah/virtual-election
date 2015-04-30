@@ -8,7 +8,7 @@ class CLA {
 
 	final private static Map<String, Integer> nameSSNMap = new HashMap<String, Integer>(); //name-ssn map
 	final private static Map<String, Integer> nameValidationMap = new HashMap<String, Integer>(); //name-validation number map
-	final private static Map<String, Boolean> nameVotedMap = new HashMap<String, Boolean>(); //name-voted map 
+	final private static Map<String, String> nameVotedMap = new HashMap<String, String>(); //name-voted map 
 		
 	static void buildBase(List<Voter> voters){
 		
@@ -23,7 +23,7 @@ class CLA {
 			int ssn = 100000000;
 			ssn += i;
 			nameSSNMap.put(v.getName(), ssn);
-			nameVotedMap.put(v.getName(), false);
+			nameVotedMap.put(v.getName(), "No");
 			v.setValidationNum(-1);
 			v.setIdNum(-1);
 			voters.add(v);
@@ -56,7 +56,7 @@ class CLA {
 		
 		for(String name : nameValidationMap.keySet()){
 			if(nameValidationMap.get(name) == validationNum){
-				nameVotedMap.put(name, true);
+				nameVotedMap.put(name, "Yes");
 				break;
 			}
 		}
@@ -64,17 +64,6 @@ class CLA {
 	
 	static Map<String, String> whoVoted(){
 		
-		Map<String, String> whoVoted = new HashMap<String, String>();
-		//generate a map of who voted and who didn't
-		for(String name : nameVotedMap.keySet()){
-			if(nameVotedMap.get(name)){
-				whoVoted.put(name, "Yes");
-			}
-			else{
-				whoVoted.put(name, "No");
-			}
-		}
-		
-		return whoVoted;
+		return nameVotedMap;
 	}
 }
